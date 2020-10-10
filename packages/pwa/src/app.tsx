@@ -1,6 +1,7 @@
 import Footer from '@/components/Footer';
 import RightContent from '@/components/RightContent';
 import { BasicLayoutProps, Settings as LayoutSettings } from '@ant-design/pro-layout';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { notification } from 'antd';
 import React from 'react';
 import { history, RequestConfig } from 'umi';
@@ -105,3 +106,11 @@ const errorHandler = (error: ResponseError) => {
 export const request: RequestConfig = {
   errorHandler,
 };
+
+export function rootContainer(container: React.Component) {
+  const apolloClient = new ApolloClient({
+    uri: 'http://localhost:1337/graphql',
+    cache: new InMemoryCache()
+  });
+  return (<ApolloProvider client={apolloClient}>{container}</ApolloProvider>);
+}

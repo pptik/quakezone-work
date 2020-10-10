@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageContainer } from "@ant-design/pro-layout";
 import ProTable, { ProColumns, RequestData } from '@ant-design/pro-table';
-import { ApolloClient, ApolloProvider, gql, InMemoryCache, useQuery } from '@apollo/client';
+import { gql, useApolloClient, useQuery } from '@apollo/client';
 
 interface ContentType {
   id?: string;
@@ -21,12 +21,6 @@ export interface TableListParams {
   sorter?: { [key: string]: any };
 }
 
-export const client = new ApolloClient({
-  uri: 'http://localhost:1337/graphql',
-  cache: new InMemoryCache()
-});
-
-
 const CONTENT_TYPES = gql`
 {
   contentTypesDynamic {
@@ -45,17 +39,20 @@ const CONTENT_TYPES = gql`
 }
 `;
 
-export function ContentTypeListInner() {
-
-  const { loading, error, data } = useQuery(CONTENT_TYPES);
-  console.debug('loading=', loading, 'error=', error, 'data=', data);
+export default function ContentTypeList() {
+  const client = useApolloClient();
+  // const { loading, error, data } = useQuery(CONTENT_TYPES);
+  // console.debug('loading=', loading, 'error=', error, 'data=', data);
 
   async function queryRule(params?: TableListParams): Promise<RequestData<ContentType>> {
     console.log('queryRule', params);
-    if (loading || error) {
-      return {data: []};
+    const res = await client.query({query: CONTENT_TYPES});
+    if (res.error) {
+      console.error(res.errors);
+      return {data: [], success: false};
     } else {
-      return {data: data.contentTypesDynamic};
+      console.debug('contentTypes=', res.data.contentTypesDynamic);
+      return {data: res.data.contentTypesDynamic};
     }
     // return {
     //   data: [
@@ -95,17 +92,11 @@ export function ContentTypeListInner() {
     <PageContainer>
       <ProTable<ContentType>
         headerTitle="Content Type List"
-        rowKey="id"
+        rowKey="uid"
         columns={columns}
         request={(params, sorter, filter) => queryRule({ ...params, sorter, filter })}
         onReset={() => console.log('rset')}
       />
     </PageContainer>
   )
-}
-
-export default function ContentTypeList() {
-  return (<ApolloProvider client={client}>
-    <ContentTypeListInner />
-  </ApolloProvider>);
 }
