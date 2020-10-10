@@ -1,7 +1,8 @@
 {
+  "kind": "collectionType",
   "collectionName": "content_types",
   "info": {
-    "name": "contentType",
+    "name": "Content Type",
     "description": ""
   },
   "options": {

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tsunami-runups",
+      "handler": "tsunami-runup.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tsunami-runups/count",
+      "handler": "tsunami-runup.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tsunami-runups/:id",
+      "handler": "tsunami-runup.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tsunami-runups",
+      "handler": "tsunami-runup.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tsunami-runups/:id",
+      "handler": "tsunami-runup.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tsunami-runups/:id",
+      "handler": "tsunami-runup.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
