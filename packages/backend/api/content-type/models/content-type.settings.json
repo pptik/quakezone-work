@@ -1,0 +1,14 @@
+{
+  "collectionName": "content_types",
+  "info": {
+    "name": "contentType",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false,
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {}
+}

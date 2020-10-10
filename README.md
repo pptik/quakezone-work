@@ -11,7 +11,7 @@ Requirements:
 
 Steps:
 
-1. Open this in Visual Studio Code
+1. Open this in Visual Studio Code or Gitpod
 2. Run: `yarn`
 3. In first terminal:
 

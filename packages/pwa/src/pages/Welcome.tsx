@@ -25,7 +25,7 @@ export default (): React.ReactNode => (
         }}
       />
       <Typography.Text strong>
-        高级表格{' '}
+        CENUNG
         <a href="https://protable.ant.design/" rel="noopener noreferrer" target="__blank">
           欢迎使用
         </a>
