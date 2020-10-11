@@ -1,0 +1,27 @@
+query contentTypes {
+  {
+    contentTypesDynamic {
+      uid
+      name
+      apiID
+      label
+      isDisplay
+      schema {
+        modelType
+        connection
+        collectionName
+        kind
+      }
+    }
+  }
+}
+
+mutation createContentType($name: String!) {
+  createContentTypeDynamic(input: {
+    data: {
+      name: $name
+    }
+  }) {
+    uid
+  }
+}

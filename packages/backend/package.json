@@ -11,6 +11,7 @@
   },
   "devDependencies": {},
   "dependencies": {
+    "await-spawn": "^4.0.1",
     "knex": "<0.20.0",
     "sqlite3": "latest",
     "strapi": "3.2.3",
