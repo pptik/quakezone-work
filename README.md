@@ -1,5 +1,9 @@
 # QuakeZone - Soluvas Workspace
 
+## MongoDB Database Snapshot
+
+Check out `Google Drive/QuakeZone/snapshot`.
+
 ## Development Setup
 
 Requirements:
